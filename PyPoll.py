@@ -5,6 +5,6 @@
 # 4. The total number of votes each candidate won
 # 5. The winner of the election based on popular vote
 
-import datetime as dt
-now = dt.datetime.now()
-print(f"The time right now is {now}")
+import csv
+with open('Resources/election_results.csv') as electionData:
+    print(electionData)
