@@ -8,11 +8,34 @@
 import csv
 import os
 
+# Load/Save variables
 fileToLoad = os.path.join("Resources","election_results.csv")
 fileToSave = os.path.join("Analysis","election_analysis.txt")
 
+totVotes = 0
+candidates = []
+votes = {}
+
+# Open election results and read
 with open(fileToLoad, "r") as electionData:
     fileReader = csv.reader(electionData)
 
+    # read headers
     headers = next(electionData)
-    print(headers)
+
+    # read csv
+    for row in fileReader:
+        totVotes += 1
+        name = row[2]
+
+        # add name to list of candidates (if needed)
+        if name not in candidates:
+            candidates.append(name)
+            votes[name] = 0
+        
+        # add vote
+        votes[name] += 1
+
+for name in candidates:
+    perVote = votes[name] / totVotes * 100
+    print(f"\n{name}: received {perVote:.2f}% of the vote.")
