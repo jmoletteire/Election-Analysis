@@ -39,19 +39,45 @@ with open(fileToLoad, "r") as electionData:
         # add vote
         votes[name] += 1
 
-for name in candidates:
-    perVote = votes[name] / totVotes * 100
-    print(f"{name}: {perVote:.1f}% ({votes[name]:,})\n")
+# Write results to file
+with open(fileToSave, "w") as txt_file:
+    # Print and save final vote count
+    electionResults = (
+        f"\nElection Results\n"
+        f"-------------------------\n"
+        f"Total Votes: {totVotes:,}\n"
+        f"-------------------------\n")
+    print(electionResults)
+    txt_file.write(electionResults)
 
-    if (votes[name] > winCount) and (perVote > winPercent):
+    # Print each candidate's voter count and percentage
+    for name in candidates:
+        perVote = votes[name] / totVotes * 100
+
+        # determine winning percentage, winning vote count, and winner
+        if (votes[name] > winCount) and (perVote > winPercent):
             winner = name
             winCount = votes[name]
             winPercent = perVote
+        
+        # calculate candidate results
+        candidateResults = (
+            f"{name}: {perVote:.1f}% ({votes[name]:,})\n")
+        
+        # print candidate results to terminal
+        print(candidateResults)
 
-winnerSummary = (
-    f"-------------------------\n"
-    f"Winner: {winner}\n"
-    f"Winning Vote Count: {winCount:,}\n"
-    f"Winning Percentage: {winPercent:.1f}%\n"
-    f"-------------------------\n")
-print(winnerSummary)
+        # save candidate results to file
+        txt_file.write(candidateResults)
+
+    # Print winning candidate's results to terminal
+    winnerSummary = (
+        f"-------------------------\n"
+        f"Winner: {winner}\n"
+        f"Winning Vote Count: {winCount:,}\n"
+        f"Winning Percentage: {winPercent:.1f}%\n"
+        f"-------------------------\n")
+    print(winnerSummary)
+
+    # Save winning candidate's results to file
+    txt_file.write(winnerSummary)
