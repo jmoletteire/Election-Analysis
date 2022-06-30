@@ -15,6 +15,9 @@ fileToSave = os.path.join("Analysis","election_analysis.txt")
 totVotes = 0
 candidates = []
 votes = {}
+winner = ""
+winCount = 0
+winPercent = 0
 
 # Open election results and read
 with open(fileToLoad, "r") as electionData:
@@ -38,4 +41,17 @@ with open(fileToLoad, "r") as electionData:
 
 for name in candidates:
     perVote = votes[name] / totVotes * 100
-    print(f"\n{name}: received {perVote:.2f}% of the vote.")
+    print(f"{name}: {perVote:.1f}% ({votes[name]:,})\n")
+
+    if (votes[name] > winCount) and (perVote > winPercent):
+            winner = name
+            winCount = votes[name]
+            winPercent = perVote
+
+winnerSummary = (
+    f"-------------------------\n"
+    f"Winner: {winner}\n"
+    f"Winning Vote Count: {winCount:,}\n"
+    f"Winning Percentage: {winPercent:.1f}%\n"
+    f"-------------------------\n")
+print(winnerSummary)
