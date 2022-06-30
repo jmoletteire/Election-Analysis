@@ -20,6 +20,8 @@ The analysis of the election shows that:
   - Jefferson accounted for 10.5% of all votes with 38,855 votes cast.
   - Denver accounted for 82.8% of all votes with 306,055 votes cast.
   - Arapahoe accounted for 6.7% of all votes with 24,801 votes cast.
+- The county with the largest turnout was:
+  - Denver, which accounted for 82.8% of all votes with 306,055 votes cast.
 - The candidates were:
   - Charles Casper Stockham
   - Diana DeGette
