@@ -6,5 +6,13 @@
 # 5. The winner of the election based on popular vote
 
 import csv
-with open('Resources/election_results.csv') as electionData:
-    print(electionData)
+import os
+
+fileToLoad = os.path.join("Resources","election_results.csv")
+fileToSave = os.path.join("Analysis","election_analysis.txt")
+
+with open(fileToLoad, "r") as electionData:
+    fileReader = csv.reader(electionData)
+
+    headers = next(electionData)
+    print(headers)
