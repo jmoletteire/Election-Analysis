@@ -1,4 +1,4 @@
-# Election-Analysis
+# Election Analysis
 
 ## Project Overview
 A Colorado Board of Elections employee has asked for an election audit of a recent local congressional election.
